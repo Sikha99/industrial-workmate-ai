@@ -1,0 +1,273 @@
+{
+  "total_cases": 24,
+  "passed": 21,
+  "failed": 3,
+  "behavior_pass_rate_percent": 87.5,
+  "average_latency_seconds": 1.682,
+  "results": [
+    {
+      "id": "D01",
+      "category": "direct",
+      "question": "Can operators be created manually in the WTM application?",
+      "expected_behavior": "answer",
+      "expected_rule": "R1",
+      "actual_answer": "No, operators cannot be created manually in the WTM application. According to the factory context provided, operators must be created through the WTM application.",
+      "retrieved_context": null,
+      "behavior_correct": true,
+      "latency_seconds": 2.106
+    },
+    {
+      "id": "D02",
+      "category": "direct",
+      "question": "Can a worker be assigned to two shifts on the same day?",
+      "expected_behavior": "answer",
+      "expected_rule": "R2",
+      "actual_answer": "No, a worker cannot be assigned to two shifts on the same day. According to the factory rule, a worker must not be assigned to more than one shift on the same day.",
+      "retrieved_context": null,
+      "behavior_correct": true,
+      "latency_seconds": 2.454
+    },
+    {
+      "id": "D03",
+      "category": "direct",
+      "question": "What takes priority when a worker has a shift and training on the same day?",
+      "expected_behavior": "answer",
+      "expected_rule": "R3",
+      "actual_answer": "Training takes priority over the shift when a worker has both a shift and training scheduled on the same day. According to the factory context provided, training is given precedence to avoid any potential issues or conflicts with work responsibilities.",
+      "retrieved_context": null,
+      "behavior_correct": true,
+      "latency_seconds": 2.618
+    },
+    {
+      "id": "D04",
+      "category": "direct",
+      "question": "Who is responsible for adding a missing primary department?",
+      "expected_behavior": "answer",
+      "expected_rule": "R4",
+      "actual_answer": "The supervisor is responsible for adding a missing primary department.",
+      "retrieved_context": null,
+      "behavior_correct": true,
+      "latency_seconds": 1.175
+    },
+    {
+      "id": "D05",
+      "category": "direct",
+      "question": "What must be checked before assigning a worker to equipment?",
+      "expected_behavior": "answer",
+      "expected_rule": "R5",
+      "actual_answer": "Skills must be checked before assigning a worker to equipment to ensure they meet the relevant skill requirements.",
+      "retrieved_context": null,
+      "behavior_correct": true,
+      "latency_seconds": 1.597
+    },
+    {
+      "id": "D06",
+      "category": "direct",
+      "question": "Who must resolve an operator's scheduling conflict before a new assignment is confirmed?",
+      "expected_behavior": "answer",
+      "expected_rule": "R6",
+      "actual_answer": "The foreman must resolve the operator's scheduling conflict before confirming a new assignment.",
+      "retrieved_context": null,
+      "behavior_correct": true,
+      "latency_seconds": 1.416
+    },
+    {
+      "id": "P01",
+      "category": "paraphrase",
+      "question": "Where does the WTM system get operator information from?",
+      "expected_behavior": "answer",
+      "expected_rule": "R1",
+      "actual_answer": "No matching information found in the factory knowledge base.",
+      "retrieved_context": null,
+      "behavior_correct": false,
+      "latency_seconds": 0.039
+    },
+    {
+      "id": "P02",
+      "category": "paraphrase",
+      "question": "Can the same employee be scheduled for a morning shift and an evening shift on one date?",
+      "expected_behavior": "answer",
+      "expected_rule": "R2",
+      "actual_answer": "No, the same employee cannot be scheduled for a morning shift and an evening shift on the same date. According to the provided rule, a worker can only be assigned to one shift on a single day.",
+      "retrieved_context": null,
+      "behavior_correct": true,
+      "latency_seconds": 2.598
+    },
+    {
+      "id": "P03",
+      "category": "paraphrase",
+      "question": "If training and a work shift overlap on the same day, which one wins?",
+      "expected_behavior": "answer",
+      "expected_rule": "R3",
+      "actual_answer": "Training wins. According to the factory rule provided, if a worker's shift and training are scheduled on the same day, training takes precedence over the shift.",
+      "retrieved_context": null,
+      "behavior_correct": true,
+      "latency_seconds": 1.879
+    },
+    {
+      "id": "P04",
+      "category": "paraphrase",
+      "question": "A worker has no primary department. Who should add it?",
+      "expected_behavior": "answer",
+      "expected_rule": "R4",
+      "actual_answer": "The supervisor should add the primary department. According to the factory rule, if a worker's primary department is missing, it is the supervisor's responsibility to assign one.",
+      "retrieved_context": null,
+      "behavior_correct": true,
+      "latency_seconds": 2.377
+    },
+    {
+      "id": "P05",
+      "category": "paraphrase",
+      "question": "How do we make sure an employee is qualified to operate a piece of equipment?",
+      "expected_behavior": "answer",
+      "expected_rule": "R5",
+      "actual_answer": "To ensure an employee is qualified to operate a piece of equipment, the factory checks their skills against the relevant skill requirements. This is done by performing skill assessments or training evaluations as per the company's established procedures. The results of these checks are used to determine if the employee is competent to operate the equipment safely and effectively.",
+      "retrieved_context": null,
+      "behavior_correct": true,
+      "latency_seconds": 3.924
+    },
+    {
+      "id": "P06",
+      "category": "paraphrase",
+      "question": "An operator already has a scheduling clash. What must happen before confirming another assignment?",
+      "expected_behavior": "answer",
+      "expected_rule": "R6",
+      "actual_answer": "Before confirming another assignment, the foreman must review the existing assignments to resolve the scheduling conflict.",
+      "retrieved_context": null,
+      "behavior_correct": true,
+      "latency_seconds": 1.524
+    },
+    {
+      "id": "U01",
+      "category": "unsupported",
+      "question": "What is the minimum experience required before assigning an operator to equipment?",
+      "expected_behavior": "fallback",
+      "expected_rule": null,
+      "actual_answer": "No matching information found in the factory knowledge base.",
+      "retrieved_context": null,
+      "behavior_correct": true,
+      "latency_seconds": 0.035
+    },
+    {
+      "id": "U02",
+      "category": "unsupported",
+      "question": "What is an operator's monthly salary?",
+      "expected_behavior": "fallback",
+      "expected_rule": null,
+      "actual_answer": "No matching information found in the factory knowledge base.",
+      "retrieved_context": null,
+      "behavior_correct": true,
+      "latency_seconds": 0.044
+    },
+    {
+      "id": "U03",
+      "category": "unsupported",
+      "question": "How many annual leave days does each worker receive?",
+      "expected_behavior": "fallback",
+      "expected_rule": null,
+      "actual_answer": "No matching information found in the factory knowledge base.",
+      "retrieved_context": null,
+      "behavior_correct": true,
+      "latency_seconds": 0.034
+    },
+    {
+      "id": "U04",
+      "category": "unsupported",
+      "question": "What is the required preventive maintenance interval for each machine?",
+      "expected_behavior": "fallback",
+      "expected_rule": null,
+      "actual_answer": "No matching information found in the factory knowledge base.",
+      "retrieved_context": null,
+      "behavior_correct": true,
+      "latency_seconds": 0.036
+    },
+    {
+      "id": "U05",
+      "category": "unsupported",
+      "question": "What is the overtime payment rate for a foreman?",
+      "expected_behavior": "fallback",
+      "expected_rule": null,
+      "actual_answer": "No matching information found in the factory knowledge base.",
+      "retrieved_context": null,
+      "behavior_correct": true,
+      "latency_seconds": 0.032
+    },
+    {
+      "id": "U06",
+      "category": "unsupported",
+      "question": "What is the home address of a specific operator?",
+      "expected_behavior": "fallback",
+      "expected_rule": null,
+      "actual_answer": "No matching information found in the factory knowledge base.",
+      "retrieved_context": null,
+      "behavior_correct": true,
+      "latency_seconds": 0.028
+    },
+    {
+      "id": "T01",
+      "category": "tricky",
+      "question": "An operator's details are missing in WTM. Can I create the operator manually instead of getting the data from SAP?",
+      "expected_behavior": "answer",
+      "expected_rule": "R1",
+      "actual_answer": "No, you cannot create an operator manually in the WTM application. According to the factory rule, operators cannot be created manually in the WTM application, as specified in the context. Operators must be created through the WTM application for Other worker types.",
+      "retrieved_context": null,
+      "behavior_correct": true,
+      "latency_seconds": 3.233
+    },
+    {
+      "id": "T02",
+      "category": "tricky",
+      "question": "Can a foreman assign the same worker to two different shifts on one day?",
+      "expected_behavior": "answer",
+      "expected_rule": "R2",
+      "actual_answer": "No, a foreman cannot assign the same worker to two different shifts on the same day. This rule ensures that workers are not overworked or given conflicting shifts, which can lead to safety issues or worker dissatisfaction.",
+      "retrieved_context": null,
+      "behavior_correct": true,
+      "latency_seconds": 2.443
+    },
+    {
+      "id": "T03",
+      "category": "tricky",
+      "question": "The worker's shift is already scheduled, but training is added for that day. Should the shift take priority?",
+      "expected_behavior": "answer",
+      "expected_rule": "R3",
+      "actual_answer": "Yes, the shift should take priority. According to the factory rule provided, if a worker's shift and training are scheduled on the same day, training is given priority over the shift.",
+      "retrieved_context": null,
+      "behavior_correct": false,
+      "latency_seconds": 2.44
+    },
+    {
+      "id": "T04",
+      "category": "tricky",
+      "question": "A worker has a primary department assigned. Who must add the missing primary department?",
+      "expected_behavior": "fallback",
+      "expected_rule": null,
+      "actual_answer": "The supervisor must add the missing primary department. This is because the rule states that if a primary department is missing, the supervisor is responsible for adding it.",
+      "retrieved_context": null,
+      "behavior_correct": false,
+      "latency_seconds": 2.135
+    },
+    {
+      "id": "T05",
+      "category": "tricky",
+      "question": "Can we assign a worker to equipment first and check their skills afterward?",
+      "expected_behavior": "answer",
+      "expected_rule": "R5",
+      "actual_answer": "No, we cannot assign a worker to equipment first and check their skills afterward. The factory rule states that skills must be checked before assigning workers to equipment to ensure they meet the relevant skill requirements. This sequence of actions is crucial to maintain safety and efficiency in the production process.",
+      "retrieved_context": null,
+      "behavior_correct": true,
+      "latency_seconds": 3.282
+    },
+    {
+      "id": "T06",
+      "category": "tricky",
+      "question": "An operator has a scheduling conflict. Can the new assignment be confirmed before the foreman resolves it?",
+      "expected_behavior": "answer",
+      "expected_rule": "R6",
+      "actual_answer": "No, the new assignment cannot be confirmed before the foreman resolves the scheduling conflict. According to the factory rule, the foreman must review the existing assignments and resolve the conflict before any new assignment can be confirmed.",
+      "retrieved_context": null,
+      "behavior_correct": true,
+      "latency_seconds": 2.908
+    }
+  ]
+}

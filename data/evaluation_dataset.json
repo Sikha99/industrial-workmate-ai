@@ -1,0 +1,196 @@
+[
+  {
+    "id": "D01",
+    "category": "direct",
+    "question": "Can operators be created manually in the WTM application?",
+    "expected_behavior": "answer",
+    "expected_rule": "R1",
+    "expected_answer": "Operators cannot be created manually in WTM; operator data is retrieved from SAP."
+  },
+  {
+    "id": "D02",
+    "category": "direct",
+    "question": "Can a worker be assigned to two shifts on the same day?",
+    "expected_behavior": "answer",
+    "expected_rule": "R2",
+    "expected_answer": "No. A worker must not be assigned to more than one shift on the same day."
+  },
+  {
+    "id": "D03",
+    "category": "direct",
+    "question": "What takes priority when a worker has a shift and training on the same day?",
+    "expected_behavior": "answer",
+    "expected_rule": "R3",
+    "expected_answer": "Training takes priority over the shift."
+  },
+  {
+    "id": "D04",
+    "category": "direct",
+    "question": "Who is responsible for adding a missing primary department?",
+    "expected_behavior": "answer",
+    "expected_rule": "R4",
+    "expected_answer": "The worker's supervisor is responsible for adding the missing primary department."
+  },
+  {
+    "id": "D05",
+    "category": "direct",
+    "question": "What must be checked before assigning a worker to equipment?",
+    "expected_behavior": "answer",
+    "expected_rule": "R5",
+    "expected_answer": "The worker's skills must be checked to ensure they meet the relevant skill requirements."
+  },
+  {
+    "id": "D06",
+    "category": "direct",
+    "question": "Who must resolve an operator's scheduling conflict before a new assignment is confirmed?",
+    "expected_behavior": "answer",
+    "expected_rule": "R6",
+    "expected_answer": "The foreman must review existing assignments and resolve the conflict before confirming the new assignment."
+  },
+  {
+    "id": "P01",
+    "category": "paraphrase",
+    "question": "Where does the WTM system get operator information from?",
+    "expected_behavior": "answer",
+    "expected_rule": "R1",
+    "expected_answer": "Operator data is retrieved from SAP."
+  },
+  {
+    "id": "P02",
+    "category": "paraphrase",
+    "question": "Can the same employee be scheduled for a morning shift and an evening shift on one date?",
+    "expected_behavior": "answer",
+    "expected_rule": "R2",
+    "expected_answer": "No. A worker must not be assigned to more than one shift on the same day."
+  },
+  {
+    "id": "P03",
+    "category": "paraphrase",
+    "question": "If training and a work shift overlap on the same day, which one wins?",
+    "expected_behavior": "answer",
+    "expected_rule": "R3",
+    "expected_answer": "Training takes priority over the shift."
+  },
+  {
+    "id": "P04",
+    "category": "paraphrase",
+    "question": "A worker has no primary department. Who should add it?",
+    "expected_behavior": "answer",
+    "expected_rule": "R4",
+    "expected_answer": "The worker's supervisor is responsible for adding the primary department."
+  },
+  {
+    "id": "P05",
+    "category": "paraphrase",
+    "question": "How do we make sure an employee is qualified to operate a piece of equipment?",
+    "expected_behavior": "answer",
+    "expected_rule": "R5",
+    "expected_answer": "Check the worker's skills against the relevant skill requirements before assigning the equipment."
+  },
+  {
+    "id": "P06",
+    "category": "paraphrase",
+    "question": "An operator already has a scheduling clash. What must happen before confirming another assignment?",
+    "expected_behavior": "answer",
+    "expected_rule": "R6",
+    "expected_answer": "The foreman must review existing assignments and resolve the conflict before confirming the new assignment."
+  },
+  {
+    "id": "U01",
+    "category": "unsupported",
+    "question": "What is the minimum experience required before assigning an operator to equipment?",
+    "expected_behavior": "fallback",
+    "expected_rule": null,
+    "expected_answer": "No matching information found in the factory knowledge base."
+  },
+  {
+    "id": "U02",
+    "category": "unsupported",
+    "question": "What is an operator's monthly salary?",
+    "expected_behavior": "fallback",
+    "expected_rule": null,
+    "expected_answer": "No matching information found in the factory knowledge base."
+  },
+  {
+    "id": "U03",
+    "category": "unsupported",
+    "question": "How many annual leave days does each worker receive?",
+    "expected_behavior": "fallback",
+    "expected_rule": null,
+    "expected_answer": "No matching information found in the factory knowledge base."
+  },
+  {
+    "id": "U04",
+    "category": "unsupported",
+    "question": "What is the required preventive maintenance interval for each machine?",
+    "expected_behavior": "fallback",
+    "expected_rule": null,
+    "expected_answer": "No matching information found in the factory knowledge base."
+  },
+  {
+    "id": "U05",
+    "category": "unsupported",
+    "question": "What is the overtime payment rate for a foreman?",
+    "expected_behavior": "fallback",
+    "expected_rule": null,
+    "expected_answer": "No matching information found in the factory knowledge base."
+  },
+  {
+    "id": "U06",
+    "category": "unsupported",
+    "question": "What is the home address of a specific operator?",
+    "expected_behavior": "fallback",
+    "expected_rule": null,
+    "expected_answer": "No matching information found in the factory knowledge base."
+  },
+  {
+    "id": "T01",
+    "category": "tricky",
+    "question": "An operator's details are missing in WTM. Can I create the operator manually instead of getting the data from SAP?",
+    "expected_behavior": "answer",
+    "expected_rule": "R1",
+    "expected_answer": "No. Operators cannot be created manually in WTM; operator data is retrieved from SAP."
+  },
+  {
+    "id": "T02",
+    "category": "tricky",
+    "question": "Can a foreman assign the same worker to two different shifts on one day?",
+    "expected_behavior": "answer",
+    "expected_rule": "R2",
+    "expected_answer": "No. A worker must not be assigned to more than one shift on the same day."
+  },
+  {
+    "id": "T03",
+    "category": "tricky",
+    "question": "The worker's shift is already scheduled, but training is added for that day. Should the shift take priority?",
+    "expected_behavior": "answer",
+    "expected_rule": "R3",
+    "expected_answer": "No. Training takes priority over the shift.",
+    "must_contain": ["training", "priority", "shift"],
+    "must_not_contain": ["shift takes priority", "shift should take priority"]
+  },
+  {
+    "id": "T04",
+    "category": "tricky",
+    "question": "A worker has a primary department assigned. Who must add the missing primary department?",
+    "expected_behavior": "fallback",
+    "expected_rule": null,
+    "expected_answer": "The question contains conflicting conditions: it says the primary department is assigned but asks about a missing one. The rule does not resolve this contradiction."
+  },
+  {
+    "id": "T05",
+    "category": "tricky",
+    "question": "Can we assign a worker to equipment first and check their skills afterward?",
+    "expected_behavior": "answer",
+    "expected_rule": "R5",
+    "expected_answer": "No. The worker's skills must be checked before assigning them to equipment."
+  },
+  {
+    "id": "T06",
+    "category": "tricky",
+    "question": "An operator has a scheduling conflict. Can the new assignment be confirmed before the foreman resolves it?",
+    "expected_behavior": "answer",
+    "expected_rule": "R6",
+    "expected_answer": "No. The foreman must review existing assignments and resolve the conflict before the new assignment is confirmed."
+  }
+]

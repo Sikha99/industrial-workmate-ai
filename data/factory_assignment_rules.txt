@@ -1,0 +1,12 @@
+
+Operator data is retrieved from SAP. Operators cannot be created manually in the Work Time Management (WTM) application andOther worker types must be created through the WTM application.
+
+A worker, including an operator, foreman, or any other worker, must not be assigned to more than one shift on the same day.
+
+If a worker's shift and training are scheduled on the same day, training takes priority over the shift.
+
+Every worker must have a primary department assigned. If the primary department is missing, the worker's supervisor is responsible for adding it.
+
+A worker's skills must be checked before assigning them to equipment to ensure they meet the relevant skill requirements.
+
+If an operator has a scheduling conflict, the foreman must review the existing assignments and resolve the conflict before confirming a new assignment.
