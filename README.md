@@ -1,92 +1,58 @@
-\# Industrial WorkMate AI
+# Industrial WorkMate AI
 
+A local AI assistant that helps users understand factory work management procedures and perform basic shift management operations using AI.
 
+## Overview
 
-A local AI assistant that helps users understand factory work management procedures using Retrieval-Augmented Generation (RAG).
+Industrial WorkMate AI uses Retrieval-Augmented Generation (RAG) to answer factory-related questions using information from a custom knowledge base.
 
+The application also supports basic shift management through natural-language requests. Users can create and view shifts by interacting with the assistant. Shift information is stored in a SQLite database.
 
+The project is developed using open-source technologies to understand and implement practical AI applications.
 
-\## Overview
+## Technology Stack
 
+- **Language:** Python
+- **Embeddings:** Sentence Transformers
+- **Vector Database:** ChromaDB
+- **LLM Runtime:** Ollama
+- **Language Model:** Qwen 2.5 1.5B
+- **Workflow:** LangGraph
+- **Backend:** FastAPI
+- **Database:** SQLite
+- **User Interface:** Streamlit
 
+LangGraph is used to manage different workflows in the application. As the project grows to include training management, worker skills, and shift assignments, it will help manage these connected workflows.
 
-Industrial WorkMate AI combines semantic search with a locally running Large Language Model (LLM) to retrieve relevant information from a custom factory knowledge base and generate context-aware answers.
+## Current Features
 
+- Custom factory knowledge base
+- Text chunking and embedding generation
+- Semantic search using ChromaDB
+- Local LLM integration through Ollama
+- Context-based answers using RAG
+- Fallback responses for unsupported questions
+- Interactive chat interface using Streamlit
+- Natural-language shift creation
+- View existing shifts through chat
+- Extract and validate shift details using an LLM
+- Ask follow-up questions when shift details are missing
+- Store shift information in SQLite
+- FastAPI integration for handling chat requests
+- LangGraph workflow to manage different user requests
 
+## Architecture
 
-The project demonstrates an end-to-end RAG pipeline using open-source technologies, with a focus on reliable information retrieval and practical factory work management assistance.
+1. Load the factory knowledge source.
+2. Split documents into smaller text chunks.
+3. Generate embeddings using Sentence Transformers.
+4. Store the text and embeddings in ChromaDB.
+5. Receive user questions through the chat interface.
+6. Identify the user's intent using an LLM.
+7. Use LangGraph to route the request.
+8. For factory questions, retrieve relevant information from ChromaDB and generate an answer using the local LLM.
+9. For shift requests, extract and validate the required details.
+10. Ask follow-up questions if any required details are missing.
+11. Store shift information in SQLite and return the response.
 
-
-
-\## Technology Stack
-
-
-
-\- \*\*Language:\*\* Python
-
-\- \*\*Embeddings:\*\* Sentence Transformers
-
-\- \*\*Vector Database:\*\* ChromaDB
-
-\- \*\*LLM Runtime:\*\* Ollama
-
-\- \*\*Language Model:\*\* Qwen 2.5 1.5B
-
-\- \*\*User Interface:\*\* Streamlit
-
-
-
-\## Current Features
-
-
-
-\- Custom factory knowledge base
-
-\- Text chunking and embedding generation
-
-\- Semantic search and relevant context retrieval
-
-\- Vector storage and similarity search using ChromaDB
-
-\- Local LLM integration through Ollama
-
-\- Similarity-threshold-based retrieval filtering
-
-\- Context-grounded answer generation using RAG
-
-\- Fallback responses for unsupported questions
-
-\- Interactive chat interface using Streamlit
-
-\- Evaluation dataset and results for testing question-answering behavior
-
-
-
-\## Architecture
-
-
-
-1\. Load the factory knowledge source.
-
-2\. Split documents into smaller text chunks.
-
-3\. Generate embeddings using Sentence Transformers.
-
-4\. Store the text and embeddings in ChromaDB.
-
-5\. Convert the user's question into an embedding.
-
-6\. Retrieve relevant context through semantic similarity search.
-
-7\. Apply a similarity threshold to filter weak matches.
-
-8\. Pass the retrieved context and question to the local LLM.
-
-9\. Generate a context-based answer or return a fallback when relevant information is insufficient.
-
-10\. Display the response in the Streamlit chat interface.
-
-
-
-> This project is being developed incrementally, with a focus on building practical GenAI solutions using open-source technologies and following AI engineering best practices.
-
+> This project is being developed step by step to learn and implement RAG, LangGraph, FastAPI, and database integration using open-source technologies.
