@@ -4,48 +4,70 @@ from pathlib import Path
 
 import streamlit as st
 
-# Locate the project root
+# Make the src folder accessible to Python
 PROJECT_DIR = Path(__file__).resolve().parent
 SRC_DIR = PROJECT_DIR / "src"
 
-# Make the src folder available for imports
-sys.path.insert(0, str(SRC_DIR))
+if str(SRC_DIR) not in sys.path:
+    sys.path.insert(0, str(SRC_DIR))
 
-from answer_generator import answer_question, FALLBACK
+from orchestrator import process_request, resume_request
+from answer_generator import FALLBACK
 
 
-# Configure the page
+# Page configuration
 st.set_page_config(
     page_title="Factory Work Assistant",
     page_icon="🏭",
     layout="centered"
 )
 
-# Page heading
 st.title("🏭 Factory Work Assistant")
 st.caption("AI-powered assistance for factory work management")
-
 st.divider()
 
 st.markdown(
-    "Ask questions about factory work procedures, "
-    "worker assignments, training, departments, and skills."
+    "Ask questions about factory rules or manage shifts "
+    "using natural language."
 )
 
-# Keep the conversation during the current session
+
+# Initialize session state
 if "messages" not in st.session_state:
     st.session_state.messages = []
+
+if "pending_request" not in st.session_state:
+    st.session_state.pending_request = None
+
 
 # Display previous messages
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
-# Accept a new question
+
+def format_result(result):
+    """Convert operation results into text for the chat."""
+    if isinstance(result, dict):
+        if result.get("status") == "missing_details":
+            questions = result.get("questions", [])
+            return questions[0] if questions else result.get(
+                "message", "Please provide the missing details."
+            )
+
+        return result.get("answer", str(result))
+
+    if result is None:
+        return "The operation finished without returning a result."
+
+    return str(result)
+
+
+# Chat input
 question = st.chat_input("Ask a factory-related question...")
 
+
 if question:
-    # Display the user's question
     st.session_state.messages.append({
         "role": "user",
         "content": question
@@ -54,40 +76,55 @@ if question:
     with st.chat_message("user"):
         st.markdown(question)
 
-    # Generate the answer
     with st.chat_message("assistant"):
-        with st.spinner("Checking factory information..."):
+        with st.spinner("Processing your request..."):
             try:
-                answer = answer_question(question)
+                # Continue the saved request, if one exists
+                if st.session_state.pending_request is not None:
+                    result = resume_request(
+                        st.session_state.pending_request,
+                        question
+                    )
+                else:
+                    result = process_request(question)
 
-                # Support the string return type used by the current pipeline
-                if isinstance(answer, dict):
-                    answer = answer.get("answer", FALLBACK)
+                # Keep incomplete requests; clear them when finished
+                if (
+                    isinstance(result, dict)
+                    and result.get("status") == "missing_details"
+                ):
+                    st.session_state.pending_request = result
+                else:
+                    st.session_state.pending_request = None
 
-                if not isinstance(answer, str) or not answer.strip():
+                answer = format_result(result)
+
+                if not answer.strip():
                     answer = FALLBACK
 
                 st.markdown(answer)
 
-            except Exception:
+            except Exception as error:
+                print("Application error:", error)
                 answer = (
-                    "Sorry, I couldn't process your question. "
-                    "Please try again."
+                    "Sorry, I couldn't process your request. "
+                    "Check the terminal for the error details."
                 )
                 st.error(answer)
 
-    # Save the answer in the conversation
     st.session_state.messages.append({
         "role": "assistant",
         "content": answer
     })
 
+
 # Sidebar
 with st.sidebar:
     st.header("About")
+
     st.write(
-        "This application uses Retrieval-Augmented Generation (RAG) "
-        "to answer questions using a local factory knowledge base."
+        "An open-source factory assistant that answers questions "
+        "from a local knowledge base and supports shift management."
     )
 
     st.caption("Local LLM: Qwen 2.5 1.5B")
@@ -96,4 +133,5 @@ with st.sidebar:
 
     if st.button("Clear conversation"):
         st.session_state.messages = []
+        st.session_state.pending_request = None
         st.rerun()

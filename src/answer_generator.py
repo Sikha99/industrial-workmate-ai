@@ -1,6 +1,6 @@
 
 from pathlib import Path
-
+from shift_management.shift_service import show_shifts
 import chromadb
 import ollama
 from sentence_transformers import SentenceTransformer, util
@@ -130,8 +130,11 @@ if __name__ == "__main__":
         if not question:
             continue
 
-        answer = answer_question(question)
+        if "show shifts" in question.lower() or "saved shifts" in question.lower():
+            show_shifts()
+        else:
+            answer = answer_question(question)
+            print("\nAnswer:", answer)
 
-        print("\nAnswer:", answer)
-        print("-" * 50)
+    
 

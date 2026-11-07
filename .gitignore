@@ -23,3 +23,6 @@ chroma_db/
 # Operating system files
 .DS_Store
 Thumbs.db
+
+# SQLite database
+*.db
